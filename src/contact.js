@@ -14,6 +14,11 @@ class ContactUs extends Component {
 		super();
 		this.state = {
 			// shown: false,
+			array : ['Hydrogen',
+					  'Helium',
+					  'Lithium',
+					  'Beryllium'
+					]
 		};
 	}	
 	
@@ -34,6 +39,12 @@ class ContactUs extends Component {
 		// }
 
 		
+		const element = (
+			<div>
+			  <h1>Hello, world!</h1>
+			  <h2>It is {new Date().toLocaleDateString()}.</h2>
+			</div>
+		  );	
 			const numbers = [
 				{
                     id:1,
@@ -54,7 +65,9 @@ class ContactUs extends Component {
                     address:"Pune"
                 },
 			];
-		
+
+			// const { array } = this.state;
+			
         return(
             <div className="container mt-5">
 			 <div className="row" >
@@ -67,6 +80,23 @@ class ContactUs extends Component {
 				 </div>
 					)}
 					</div>
+
+					{/* <h2>{array.shift()}</h2>
+					<h2>{array.unshift('new Item')}</h2> */}
+					{/* <h2>{array.pop()}</h2>
+					<h2>{array.push('last added')}</h2> */}
+					{/* <h2>{array.reverse()}</h2> */}
+					{/* <h2>{array.sort()}</h2> */}
+					{/* <h2>{this.state.array.reduce( function(a, b) {
+  					return a + b;
+					}, 2)}</h2><br /> */}
+
+					{/* <h2> {array.forEach((a,index) => console.log(index,a)) }
+					</h2> */}
+					<h2>{element}</h2>
+					{/* <h2>It is {new Date().toLocaleDateString()}.</h2> */}
+					{/* <h2>{this.state.array}</h2> */}
+					
 
 				
                 {/* <h2 style={ shown }>hello</h2>

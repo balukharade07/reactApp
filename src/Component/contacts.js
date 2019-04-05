@@ -52,18 +52,15 @@ export default class contacts extends Component {
 
   render() {
      const { contacts } = this.state;
-     let adminBar;
-     let adminBar1;
-     let isAdmin = true;
-     if(isAdmin)
-     {
-         adminBar =  <AddContact text="Add Contacts"  Name="User name" Age="User age" Address="Address"/>;
-         adminBar1 =  <AddContact text="Add Product"  Name="Product name" Age="Product Prices" Address="Product Discrptions"/>;
-     }
+    
+         
+     
      return (
             <React.Fragment>
-                {adminBar}
-                {adminBar1}
+                
+                <AddContact text="Add Contacts"  Name="User name" Age="User age" Address="Address"/>
+                {/* <AddContact text="Add Product"  Name="Product name" Age="Product Prices" Address="Product Discrptions"/> */}
+                {/* <AddContact text="Add List"  Name="List name" Age="Product List" Address="Product Discrptions"/> */}
                 <div className="container row mt-5 mb-5">
                  {contacts.map( (contact,index) => (
                     <Test 

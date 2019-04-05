@@ -22,6 +22,7 @@ export default class addContact extends Component {
        
         if(this.state.Username === ''|| this.state.Userage === "" || this.state.Useraddress === ""){
             console.log(null);
+            // console.error('All Filds in reqired');
         }  else{
             console.log(this.state);
             //clear Forms
@@ -47,9 +48,11 @@ export default class addContact extends Component {
                 <div className="alert alert-success" role="alert">
                     Add Contacts
                 </div>
-                ) : (<div className="alert alert-danger" role="alert">
+                ) : text === 'Add Product' ? (<div className="alert alert-danger" role="alert">
                     Add Product
-                </div>)}</h2>
+                </div>) : text === 'Add List' ?  (<div className="alert alert-primary" role="alert">
+                    Add List
+                </div>) : null }</h2>
                 <form onSubmit={this.onSubmitContact} autoComplete="OFF" >
                     <div className="form-group">
                         <label>{Name}</label>
@@ -63,6 +66,7 @@ export default class addContact extends Component {
                             value={Username}
                             pattern={OnlyAlphabetsReg}
                          />
+                         <p>{}</p>
                     </div>
                     <div className="form-group">
                         <label>{Age}</label>
