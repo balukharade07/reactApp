@@ -65,8 +65,8 @@ export default class addContact extends Component {
                             onChange={this.onChange}
                             value={Username}
                             pattern={OnlyAlphabetsReg}
+                            required
                          />
-                         <p>{}</p>
                     </div>
                     <div className="form-group">
                         <label>{Age}</label>
@@ -79,6 +79,7 @@ export default class addContact extends Component {
                             onChange={this.onChange}
                             value={Userage}
                             pattern={OnlyNumCharReg}
+                            required
                          />
                     </div>
                     <div className="form-group">
@@ -92,6 +93,7 @@ export default class addContact extends Component {
                             onChange={this.onChange}
                             value={Useraddress}
                             pattern={AllReg}
+                            required
                          />
                     </div>
                     <div className="text-center">

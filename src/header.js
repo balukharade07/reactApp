@@ -6,6 +6,8 @@ import About from './Component/contacts';
 import {Route, NavLink, BrowserRouter} from "react-router-dom";
 import './App.css';
 import logo from '../src/images/logo-small.png';
+import Text from './Component/textfiles';
+import Contactlist from './Component/contactlist';
 
  class header extends Component {
   render() {
@@ -40,9 +42,16 @@ import logo from '../src/images/logo-small.png';
           <div className="content">
             <Route path="/" exact  component={LandingPage} />
             <Route path="/Home-page" exact  component={LandingPage} />
-            <Route path="/About"  component={About} />
+            <Route  path='/About'>
+                <Route path="/About" exact component={About} />
+                {/* <Route path='/About/textfiles:topicId' component={Topic} /> */}
+                <Route path="/About/textfiles" component={Text} />
+                <Route path="/About/Contactlist" component={Contactlist} />
+            </Route>
+            
             <Route path="/login" component={login} />
             <Route path="/Contact" component={Contact} />
+           
           </div>
           </div>
           </BrowserRouter>
