@@ -22,11 +22,11 @@ class LandingPage extends Component {
 
     render() {
 
-       
-        
+
+
 return (
    <div className="App" >
-    
+
     <div className="row banner_img">
     </div>
     <div className="row info_block">
@@ -53,7 +53,7 @@ return (
               <div className="feature_block">
                   <h3 className="feature_title">Promote</h3>
                   <ul className="feature_list">
-                      <li> New Products</li> 
+                      <li> New Products</li>
                       <li> Services</li>
                       <li> Contests</li>
                       <li> Upcoming Events</li>
@@ -61,12 +61,12 @@ return (
                       <li> Email subscriptions</li>
                   </ul>
               </div>
-          </div>  
+          </div>
           <div className="col-md-4 col-xs-12">
               <div className="feature_block">
                   <h3 className="feature_title">Customize</h3>
                   <ul className="feature_list">
-                      <li> Time allotment</li> 
+                      <li> Time allotment</li>
                       <li> Post-login landing page</li>
                       <li> Terms of Use</li>
                       <li> Bandwidth limits</li>
@@ -88,9 +88,9 @@ return (
       <div className="container">
           <h3 className="title text-center">Our client</h3>
           <ul className="client_list">
-              <li><img className="img-fluid" src={images2} alt="images1"></img></li>  
-              <li><img className="img-fluid" src={images3} alt="images1"></img></li>  
-              <li><img className="img-fluid" src={images4} alt="images1"></img></li>  
+              <li><img className="img-fluid" src={images2} alt="images1"></img></li>
+              <li><img className="img-fluid" src={images3} alt="images1"></img></li>
+              <li><img className="img-fluid" src={images4} alt="images1"></img></li>
               <li><img className="img-fluid" src={images5} alt="images1"></img></li>
           </ul>
       </div>

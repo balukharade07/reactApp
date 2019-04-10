@@ -36,7 +36,7 @@ form input.error {
 .nav-link{
   color: white !important;
   padding: 20px 40px !important;
- 
+
 }
 .navbar{
  padding: 0px !important
@@ -131,7 +131,7 @@ form input.error {
   text-transform: uppercase;
   line-height: 32px;
 }
-.learmore_btn:hover, .learmore_btn:focus{   
+.learmore_btn:hover, .learmore_btn:focus{
   background-color: #eab270;
   text-decoration: none;
   color: #fff;

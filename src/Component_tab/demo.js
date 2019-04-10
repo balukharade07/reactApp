@@ -14,30 +14,17 @@ export default class demo extends Component {
               <input
                 type={value.type}
                 autoComplete={value.autoComplete}
-                className={value.className}
+                className={value.class}
                 placeholder={value.placeholder}
                 name={value.name}
                 value={value.value}
                 required={value.required}
                 onChange={onChange}
+                pattern={value.pattern}
               />
             </div>
           ))}
       </div>
-      // <div>
-
-      //                 <input
-      //                     type="text"
-      //                     autoComplete="OFF"
-      //                     className="form-control"
-      //                     placeholder={place}
-      //                     onChange={this.onChange}
-      //                     name={Username}
-      //                     value={Uservalue}
-      //                     required
-      //                  />
-
-      // </div>
     );
   }
 }

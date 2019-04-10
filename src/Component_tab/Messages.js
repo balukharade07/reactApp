@@ -1,39 +1,24 @@
 import React, { Component } from 'react';
-import Demo from './demo'; 
-import Button from '@material-ui/core/Button';
 
 export default class Messages extends Component {
 
-  constructor(props){
-    super(props);
-    this.state={
-     address:""
-    }
-  }
-
-  onChange = (e) => {
-    this.setState({[e.target.name] : e.target.value});
-}
-
-onSubmitContact = (e) =>{
-  e.preventDefault();
-    console.log(this.state);
-}
-
   render() {
+    const { boxdata } = this.props;
     return (
-      <div>
-        <h2>Messages is work</h2>
-        <form onSubmit={this.onSubmitContact}>
-                    <div className="form-group">
-                        <label>Messages</label>
-                        <Demo  name="address" place="Messages"/>
-                    </div>
-                    <div className="text-center">
-                            <Button type="submit" className="col-lg-4 mt-5" id="primary" variant="contained" color='primary'> Submit </Button>
-                    </div>
-                </form>
-      </div>
+      <React.Fragment>
+        {boxdata.map((value, index) => (
+          <div className="col-lg-4" key={index}>
+            <div className="shadow  mb-4 bg-white" >
+              <h2>{value.h2}</h2>
+              <div style={{ textAlign: 'center' }}>
+                <img className="img-fluid" src={value.img} style={{ width: "200px" }} alt={value.img}></img>
+              </div>
+              <div>{value.text}</div>
+              <h3>{value.name}</h3>
+            </div>
+          </div>
+        ))}
+      </React.Fragment>
     )
   }
 }

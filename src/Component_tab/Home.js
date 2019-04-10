@@ -3,7 +3,7 @@ import Demo from "./demo";
 import Button from "@material-ui/core/Button";
 
 export default class Home extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       username: "",
@@ -28,46 +28,55 @@ export default class Home extends Component {
     });
   };
   render() {
+    const OnlyAlphabetsReg = '^[a-zA-Z][a-zA-Z ]+$';
+    const OnlyNumCharReg = '^[0-9][0-9 ]*$';
+    const AllReg = '[a-zA-Z0-9_]+.*$';
+    const email = '[a-z0-9._%+-]+@[a-z0-9.-]+[a-z]{2,4}$';
+
     const formElements = [
       {
         label: "Username",
         type: "text",
         autoComplete: "OFF",
-        className: "form-control",
-        placeholder: "Username",
+        class: "form-control",
+        placeholder: "Enter Username",
         name: "username",
         value: this.state.username,
-        required: true
+        required: true,
+        pattern: OnlyAlphabetsReg
       },
       {
         label: "Age",
-        type: "number",
+        type: "text",
         autoComplete: "OFF",
-        className: "form-control",
-        placeholder: "Age",
+        class: "form-control",
+        placeholder: "Enter Age",
         name: "age",
         value: this.state.age,
-        required: true
+        required: true,
+        pattern: OnlyNumCharReg
       },
       {
         label: "Email",
-        type: "email",
+        type: "text",
         autoComplete: "OFF",
-        className: "form-control",
-        placeholder: "Email Address",
+        class: "form-control",
+        placeholder: "Enter Email Address",
         name: "email",
         value: this.state.email,
-        required: true
+        required: true,
+        pattern: email
       },
       {
         label: "Password",
         type: "password",
         autoComplete: "OFF",
-        className: "form-control",
-        placeholder: "Password",
+        class: "form-control",
+        placeholder: "Enter Password",
         name: "password",
         value: this.state.password,
-        required: true
+        required: true,
+        pattern: AllReg
       }
     ];
 
@@ -84,8 +93,7 @@ export default class Home extends Component {
               id="primary"
               variant="contained"
               color="primary"
-            >
-              Submit
+            >Submit
             </Button>
           </div>
         </form>
