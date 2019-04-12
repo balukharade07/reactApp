@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 import Test from './test';
-// import AddContact from './addContact';
 import Dammy from './dammy'
 import '../App.css';
 import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-// import {Route, NavLink, BrowserRouter} from "react-router-dom";
 
 export default class contactlist extends Component {
     componentDidMount() {
@@ -68,7 +66,8 @@ export default class contactlist extends Component {
 
                 </div>
                 <div className="container">
-                    <Dammy />
+                    <Dammy name={contacts} />
+                    <button className="btn btn-danger" onClick={ () => alert('hii')}>Delete Row</button>
                 </div>
 
                 <div className="container row mt-5 mb-5">

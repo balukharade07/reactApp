@@ -6,10 +6,10 @@ export default class demo extends Component {
     const { formElements, onChange } = this.props;
 
     return (
-      <div>
+      <React.Fragment>
         {formElements &&
           formElements.map((value, index) => (
-            <div className="form-group" key={index}>
+            <div className="form-group col-lg-6" key={index}>
               <label>{value.label}</label>
               <input
                 type={value.type}
@@ -24,7 +24,7 @@ export default class demo extends Component {
               />
             </div>
           ))}
-      </div>
+      </React.Fragment>
     );
   }
 }

@@ -16,14 +16,16 @@ export default class addContact extends Component {
     onChange = (e) => {
         this.setState({[e.target.name] : e.target.value});
     }
-    
+
     onSubmitContact = (e) =>{
         e.preventDefault();
-       
-        if(this.state.Username === ''|| this.state.Userage === "" || this.state.Useraddress === ""){
+
+        if (this.state.Username === "" || this.state.Userage === "" || this.state.Useraddress === "")
+        {
             console.log(null);
             // console.error('All Filds in reqired');
-        }  else{
+        } else
+        {
             console.log(this.state);
             //clear Forms
             this.setState({
@@ -31,7 +33,7 @@ export default class addContact extends Component {
                 Userage:'',
                 Useraddress:''
             });
-          }  
+          }
     }
 
   render() {
@@ -56,10 +58,10 @@ export default class addContact extends Component {
                 <form onSubmit={this.onSubmitContact} autoComplete="OFF" >
                     <div className="form-group">
                         <label>{Name}</label>
-                        <input 
+                        <input
                             type="text"
                             autoComplete="NO"
-                            className="form-control" 
+                            className="form-control"
                             placeholder={Name}
                             name='Username'
                             onChange={this.onChange}
@@ -70,10 +72,10 @@ export default class addContact extends Component {
                     </div>
                     <div className="form-group">
                         <label>{Age}</label>
-                        <input 
-                            type="text" 
+                        <input
+                            type="text"
                             autoComplete="NO1"
-                            className="form-control" 
+                            className="form-control"
                             placeholder={Age}
                             name='Userage'
                             onChange={this.onChange}
@@ -84,10 +86,10 @@ export default class addContact extends Component {
                     </div>
                     <div className="form-group">
                         <label>{Address}</label>
-                        <input 
+                        <input
                             type="text"
-                            autoComplete="OFF" 
-                            className="form-control" 
+                            autoComplete="OFF"
+                            className="form-control"
                             placeholder={Address}
                             name='Useraddress'
                             onChange={this.onChange}

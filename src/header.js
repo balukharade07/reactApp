@@ -8,7 +8,9 @@ import './App.css';
 import logo from '../src/images/logo-small.png';
 import Text from './Component/textfiles';
 import Contactlist from './Component/contactlist';
-import { Navbar, Nav } from 'react-bootstrap'
+import { Navbar, Nav } from 'react-bootstrap';
+import Api from './api';
+
 
 class header extends Component {
 
@@ -25,6 +27,9 @@ class header extends Component {
                 <NavLink className="nav-link" exact to="/Home-page">Home</NavLink>
                 <NavLink className="nav-link" to="/About">About Us</NavLink>
                 <NavLink className="nav-link" to="/Contact">Contact Us</NavLink>
+                <NavLink className="nav-link" to="/Api">List Component</NavLink>
+              </Nav>
+              <Nav className="mr-5">
                 <NavLink className="nav-link" to="/login">User login</NavLink>
               </Nav>
             </Navbar.Collapse>
@@ -33,6 +38,7 @@ class header extends Component {
           <div className="content">
             <Route path="/" exact component={LandingPage} />
             <Route path="/Home-page" exact component={LandingPage} />
+            <Route path="/Api" component={Api} />
             <Route path='/About'>
               <Route path="/About" exact component={About} />
               {/* <Route path='/About/textfiles:topicId' component={Topic} /> */}

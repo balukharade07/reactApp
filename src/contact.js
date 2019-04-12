@@ -6,6 +6,9 @@ import Settings from './Component_tab/Settings';
 import './Component_tab/tab.scss';
 // import { Button } from 'react-bootstrap';
 import { Container, Row, Col } from 'react-bootstrap';
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 class ContactUs extends Component {
 	componentDidMount() {
@@ -19,8 +22,15 @@ class ContactUs extends Component {
 				'Helium',
 				'Lithium',
 				'Beryllium'
-			]
+			],
+			startDate: new Date()
 		};
+		this.handleChange = this.handleChange.bind(this);
+	}
+	handleChange(date) {
+		this.setState({
+			startDate: date
+		});
 	}
 
 	toggle() {
@@ -86,51 +96,56 @@ class ContactUs extends Component {
 				</Container>
 
 
-				<div className="container mt-5">
+		<div className="container mt-5">
 
-					{/* <h2>{array.shift()}</h2>
-					<h2>{array.unshift('new Item')}</h2> */}
-					{/* <h2>{array.pop()}</h2>
-					<h2>{array.push('last added')}</h2> */}
-					{/* <h2>{array.reverse()}</h2> */}
-					{/* <h2>{array.sort()}</h2> */}
-					{/* <h2>{this.state.array.reduce( function(a, b) {
-  					return a + b;
-					}, 2)}</h2><br /> */}
+			{/* <h2>{array.shift()}</h2>
+			<h2>{array.unshift('new Item')}</h2> */}
+			{/* <h2>{array.pop()}</h2>
+			<h2>{array.push('last added')}</h2> */}
+			{/* <h2>{array.reverse()}</h2> */}
+			{/* <h2>{array.sort()}</h2> */}
+			{/* <h2>{this.state.array.reduce( function(a, b) {
+			return a + b;
+			}, 2)}</h2><br /> */}
 
-					{/* <h2> {array.forEach((a,index) => console.log(index,a)) }
-					</h2> */}
+			{/* <h2> {array.forEach((a,index) => console.log(index,a)) }
+			</h2> */}
+					<DatePicker
+						selected={this.state.startDate}
+						onChange={this.handleChange}
+						dateFormat="Pp"
+					/>
 
-					<h2>{element}</h2>
-					{/* <h2>It is {new Date().toLocaleDateString()}.</h2> */}
-					{/* <h2>{this.state.array}</h2> */}
+			<h2>{element}</h2>
+			{/* <h2>It is {new Date().toLocaleDateString()}.</h2> */}
+			{/* <h2>{this.state.array}</h2> */}
 
 
 
-					<button className="btn btn-primary" onClick={this.toggle.bind(this)}>Toggle</button>
-					{/* <h2 style={shown}>hello</h2> */}
-					<h2 style={hidden}>hello World</h2>
-					<BrowserRouter>
-						<section className="">
-							<div className="row">
+			<button className="btn btn-primary" onClick={this.toggle.bind(this)}>Toggle</button>
+			{/* <h2 style={shown}>hello</h2> */}
+			<h2 style={hidden}>hello World</h2>
+			<BrowserRouter>
+				<section className="">
+					<div className="row">
 
-								<div className="nav flex-column nav-pills col-lg-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-									<NavLink className="tab_section mb-2" exact to="/Contact/Home">Home</NavLink>
-									<NavLink className="tab_section mb-2" to="/Contact/Profile">Profile</NavLink>
-									<NavLink className="tab_section mb-2" to="/Contact/Settings">Settings</NavLink>
-								</div>
+						<div className="nav flex-column nav-pills col-lg-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+							<NavLink className="tab_section mb-2" exact to="/Contact/Home">Home</NavLink>
+							<NavLink className="tab_section mb-2" to="/Contact/Profile">Profile</NavLink>
+							<NavLink className="tab_section mb-2" to="/Contact/Settings">Settings</NavLink>
+						</div>
 
-								<div className="content col-lg-10">
-									<Route path="/Contact/" exact component={Home} />
-									<Route path="/Contact/Home" exact component={Home} />
-									<Route path="/Contact/Profile" component={Profile} />
-									<Route path="/Contact/Settings" component={Settings} />
-								</div>
-							</div>
+						<div className="content col-lg-10">
+							<Route path="/Contact/" exact component={Home} />
+							<Route path="/Contact/Home" exact component={Home} />
+							<Route path="/Contact/Profile" component={Profile} />
+							<Route path="/Contact/Settings" component={Settings} />
+						</div>
+					</div>
 
-						</section>
+				</section>
 
-					</BrowserRouter>
+			</BrowserRouter>
 				</div>
 			</React.Fragment>
 		);

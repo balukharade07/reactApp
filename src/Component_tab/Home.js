@@ -85,7 +85,10 @@ export default class Home extends Component {
         <h2>Homw is work</h2>
 
         <form onSubmit={this.onSubmitContact}>
+          <div className="row">
+
           <Demo formElements={formElements} onChange={this.onChange} />
+          </div>
           <div className="text-center">
             <Button
               type="submit"
