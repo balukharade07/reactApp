@@ -4,7 +4,7 @@ export default class dammy extends Component {
   render() {
     // const { name } = this.props
     return (
-      <div>
+      <React.Fragment>
         {
           this.props.name.map((newArray, index) => (
             <div key={index}>
@@ -12,7 +12,7 @@ export default class dammy extends Component {
             </div>
           ))
         }
-      </div>
+      </React.Fragment>
     )
   }
 }

@@ -9,7 +9,7 @@ export default class demo extends Component {
       <React.Fragment>
         {formElements &&
           formElements.map((value, index) => (
-            <div className="form-group col-lg-6" key={index}>
+            <div className="form-group" key={index}>
               <label>{value.label}</label>
               <input
                 type={value.type}

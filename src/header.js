@@ -10,6 +10,8 @@ import Text from './Component/textfiles';
 import Contactlist from './Component/contactlist';
 import { Navbar, Nav } from 'react-bootstrap';
 import Api from './api';
+import Show from './showContact';
+
 
 
 class header extends Component {
@@ -37,15 +39,18 @@ class header extends Component {
 
           <div className="content">
             <Route path="/" exact component={LandingPage} />
-            <Route path="/Home-page" exact component={LandingPage} />
-            <Route path="/Api" component={Api} />
+            <Route path="/Home-page" component={LandingPage} />
+
+            <Route path="/Api">
+              <Route path="/Api" exact component={Api} />
+              <Route path="/Api/show/:id" component={Show} />
+            </Route>
+
             <Route path='/About'>
               <Route path="/About" exact component={About} />
-              {/* <Route path='/About/textfiles:topicId' component={Topic} /> */}
               <Route path="/About/textfiles" component={Text} />
               <Route path="/About/Contactlist" component={Contactlist} />
             </Route>
-
             <Route path="/login" component={login} />
             <Route path="/Contact" component={Contact} />
 

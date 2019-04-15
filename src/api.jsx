@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 export default class api extends Component {
     constructor (props) {
@@ -11,7 +13,7 @@ export default class api extends Component {
     }
 
     componentDidMount() {
-        fetch("https://jsonplaceholder.typicode.com/users/1/todos")
+        fetch("https://jsonplaceholder.typicode.com/users/")
             .then(res => res.json())
             .then(
                 (result) => {
@@ -30,9 +32,7 @@ export default class api extends Component {
     }
 
     singleShow(id) {
-        alert(id)
     }
-
 
   render() {
       const { error, isLoaded, items } = this.state;
@@ -42,15 +42,18 @@ export default class api extends Component {
           return <div>Loading...</div>;
       } else {
           return (
-              <ul className="container mt-5">
-                  {items.map((item,index) => (
-                      <li key={index} onClick={this.singleShow.bind(this, item.id)}>
-                         {item.id}
-                          {item.title}
-                      </li>
-                  ))}
-              </ul>
+              <div className="container row mt-5 mb-5">
+                {items.map((item,index) => (
+                    <div className="col-lg-4" key={index}>
+                        <div className="shadow  mb-4 bg-white"  onClick={this.singleShow.bind(this, item.id)}>
+                            <p>{item.name}</p>
+                            <p>{item.email}</p>
+                            <Link to={'/Api/show/'+ item.id} className="nav-link"> <Button className="" variant="contained" color="secondary" >Contact View</Button></Link>
+                        </div>
+                    </div>
+                ))}
+              </div>
           );
       }
-  }
+    }
   }

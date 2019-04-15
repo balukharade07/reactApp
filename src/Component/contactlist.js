@@ -70,6 +70,7 @@ export default class contactlist extends Component {
                     <button className="btn btn-danger" onClick={ () => alert('hii')}>Delete Row</button>
                 </div>
 
+
                 <div className="container row mt-5 mb-5">
 
                     {contacts.map((contact, index) => (
