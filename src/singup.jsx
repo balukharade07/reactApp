@@ -3,20 +3,22 @@ import logo from "../src/images/logo-small.png";
 import "./App.css";
 import Demo from "./Component_tab/demo";
 import Button from "@material-ui/core/Button";
-import { Link } from "react-router-dom";
 // import TextField from '@material-ui/core/TextField';
 // import Validate from "react-validate-form";
 
-class NameForm extends Component {
+class Singup extends Component {
 	componentDidMount() {
-		document.title = "Logic Login page";
+		document.title = "Logic Sing UP";
 	}
 
 	constructor(props) {
 		super(props);
 		this.state = {
 			username: "",
-			password: ""
+			password: "",
+			Fname: "",
+			Lname: "",
+			email: ""
 		};
 	}
 
@@ -27,15 +29,52 @@ class NameForm extends Component {
 	onSubmitContact = e => {
 		e.preventDefault();
 		console.log(this.state);
+		this.props.history.push("/login");
 		this.setState({
 			username: "",
-			password: ""
+			password: "",
+			Fname: "",
+			Lname: "",
+			email: ""
 		});
 	};
 
 	render() {
 		const AllReg = "[a-zA-Z0-9_]+.*$";
 		const formElements = [
+			{
+				label: "First Name",
+				type: "text",
+				autoComplete: "OFF",
+				class: "form-control",
+				placeholder: "Enter Fname",
+				name: "Fname",
+				value: this.state.Fname,
+				required: true,
+				pattern: AllReg
+			},
+			{
+				label: "Last Name",
+				type: "text",
+				autoComplete: "OFF",
+				class: "form-control",
+				placeholder: "Enter Lname",
+				name: "Lname",
+				value: this.state.Lname,
+				required: true,
+				pattern: AllReg
+			},
+			{
+				label: "Email Address",
+				type: "email",
+				autoComplete: "OFF",
+				class: "form-control",
+				placeholder: "Enter Email Address",
+				name: "email",
+				value: this.state.email,
+				required: true,
+				pattern: AllReg
+			},
 			{
 				label: "Username",
 				type: "text",
@@ -70,7 +109,7 @@ class NameForm extends Component {
 						<div className="text-center">
 							<Button
 								type="submit"
-								className="col-lg-4 mt-5"
+								className="col-lg-4 mt-5 mb-5"
 								id="primary"
 								variant="contained"
 								color="primary">
@@ -78,17 +117,10 @@ class NameForm extends Component {
 							</Button>
 						</div>
 					</form>
-
-					<div style={{ textAlign: "center" }}>
-						<Link to={"/singup"} className="nav-link">
-							{" "}
-							<Button color="primary">Sing UP</Button>
-						</Link>
-					</div>
 				</div>
 			</React.Fragment>
 		);
 	}
 }
 
-export default NameForm;
+export default Singup;

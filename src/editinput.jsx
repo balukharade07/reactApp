@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-// import Button from '@material-ui/core/Button';
 
-export default class demo extends Component {
+export default class editinput extends Component {
 	render() {
 		const { formElements, onChange } = this.props;
 
@@ -17,7 +16,7 @@ export default class demo extends Component {
 								className={value.class}
 								placeholder={value.placeholder}
 								name={value.name}
-								value={value.value}
+								defaultValue={value.defaultValue}
 								required={value.required}
 								onChange={onChange}
 								pattern={value.pattern}

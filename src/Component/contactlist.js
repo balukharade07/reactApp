@@ -1,88 +1,66 @@
-import React, { Component } from 'react'
-import Test from './test';
-import Dammy from './dammy'
-import '../App.css';
-import { Button } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import Test from "./test";
+import "../App.css";
+import API from "../api";
+import { Button } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 export default class contactlist extends Component {
-    componentDidMount() {
-        document.title = "Logic About"
-    }
-    constructor () {
-        super();
-        this.state = {
-            contacts: [
-                {
-                    id: 1,
-                    name: "Balu",
-                    age: "20",
-                    address: "solapur"
-                },
-                {
-                    id: 2,
-                    name: "Shri",
-                    age: "25",
-                    address: "Pune"
-                },
-                {
-                    id: 3,
-                    name: "Amit",
-                    age: "25",
-                    address: "Mohol"
-                },
-                {
-                    id: 4,
-                    name: "Sagar",
-                    age: "25",
-                    address: "Kamathi(B.K)"
-                }
+	constructor() {
+		super();
+		this.state = {
+			contacts: []
+		};
+	}
 
-            ]
-        }
+	componentDidMount() {
+		API.get(`users`)
+			.then(res => {
+				const data = res.data;
+				this.setState({
+					isLoaded: true,
+					contacts: data
+				});
+			})
+			.catch(error => {
+				alert(error);
+			});
+	}
 
-    }
+	deleteContact(id) {
+		API.delete(`users/${id}`)
+			.then(res => {
+				console.log(res.data);
+				alert("Delete Successfully");
+			})
+			.catch(error => {
+				alert(error);
+			});
+	}
 
-    deleteContact(id) {
-        const { contacts } = this.state;
-        const newContact = contacts.filter(contact => contact.id !== id);
+	render() {
+		const { contacts } = this.state;
 
-        this.setState({
-            contacts: newContact
-        })
-    }
-
-    render() {
-        const { contacts } = this.state;
-
-
-
-        return (
-            <React.Fragment>
-
-                <div className="container col-lg-12 mt-5 mb-5">
-
-                    <Link style={{ float: "right" }} to="/About" className="nav-link"> <Button variant="contained" color="secondary" >Add Contact</Button></Link>
-
-                </div>
-                <div className="container">
-                    <Dammy name={contacts} />
-                    <button className="btn btn-danger" onClick={ () => alert('hii')}>Delete Row</button>
-                </div>
-
-
-                <div className="container row mt-5 mb-5">
-
-                    {contacts.map((contact, index) => (
-                        <Test
-                            key={contact.id}
-                            contact={contact}
-                            deleteClick={this.deleteContact.bind(this, contact.id)}
-                        />
-                    ))}
-                </div>
-
-            </React.Fragment>
-        )
-    }
+		return (
+			<React.Fragment>
+				<div className="mt-5 mb-5" style={{ float: "right" }}>
+					<Link to="/About" className="nav-link">
+						{" "}
+						<Button className="" variant="contained" color="secondary">
+							Contact Info
+						</Button>
+					</Link>
+				</div>
+				<div className="container row mt-5 mb-5">
+					{contacts.map((contact, index) => (
+						<Test
+							key={contact.id}
+							contact={contact}
+							deleteClick={this.deleteContact.bind(this, contact.id)}
+						/>
+					))}
+				</div>
+			</React.Fragment>
+		);
+	}
 }
