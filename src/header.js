@@ -63,8 +63,11 @@ class header extends Component {
 							<Route path="/About/textfiles" component={Text} />
 							<Route path="/About/Contactlist" component={Contactlist} />
 						</Route>
-						<Route path="/login" component={login} />
-						<Route path="/singup" component={Singup} />
+						<Route path="/login">
+							<Route path="/login" exact component={login} />
+							<Route path="/login/singup" component={Singup} />
+						</Route>
+
 						<Route path="/Contact" component={Contact} />
 					</div>
 				</BrowserRouter>

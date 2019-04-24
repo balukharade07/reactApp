@@ -1,28 +1,25 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { Route, NavLink, BrowserRouter } from "react-router-dom";
-import Home from './Component_tab/Home';
-import Profile from './Component_tab/Profile';
-import Settings from './Component_tab/Settings';
-import './Component_tab/tab.scss';
+import Home from "./Component_tab/Home";
+import Profile from "./Component_tab/Profile";
+import Settings from "./Component_tab/Settings";
+import FormValidations from "./Component_tab/formValidations";
+import "./Component_tab/tab.scss";
 // import { Button } from 'react-bootstrap';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 
 class ContactUs extends Component {
 	componentDidMount() {
-		document.title = "Logic Contact"
+		document.title = "Logic Contact";
 	}
-	constructor () {
+	constructor() {
 		super();
 		this.state = {
 			hidden: true,
-			array: ['Hydrogen',
-				'Helium',
-				'Lithium',
-				'Beryllium'
-			],
+			array: ["Hydrogen", "Helium", "Lithium", "Beryllium"],
 			startDate: new Date()
 		};
 		this.handleChange = this.handleChange.bind(this);
@@ -39,7 +36,6 @@ class ContactUs extends Component {
 		});
 	}
 
-
 	render() {
 		// var shown = {
 		// 	display: this.state.shown ? "block" : "none"
@@ -47,13 +43,12 @@ class ContactUs extends Component {
 
 		var hidden = {
 			display: this.state.hidden ? "block" : "none"
-		}
-
+		};
 
 		const element = (
 			<div>
 				<h1>Hello, world!</h1>
-				<h2>Today date is:-  {new Date().toLocaleDateString()}</h2>
+				<h2>Today date is:- {new Date().toLocaleDateString()}</h2>
 			</div>
 		);
 		const numbers = [
@@ -74,41 +69,38 @@ class ContactUs extends Component {
 				name: "Shri",
 				age: "25",
 				address: "Pune"
-			},
+			}
 		];
 
 		// const { array } = this.state;
 
 		return (
-
 			<React.Fragment>
 				<Container className="mt-5">
 					<Row>
-						{numbers.map((number, i) =>
+						{numbers.map((number, i) => (
 							<Col xs={12} sm={6} md={6} lg={4} key={number.id}>
-								<div className="shadow  mb-4 bg-white" >
+								<div className="shadow  mb-4 bg-white">
 									<h1>{i}</h1> <h2> {number.name} </h2> <h3>{number.age}</h3>
 									<h3> {number.address}</h3>
 								</div>
 							</Col>
-						)}
+						))}
 					</Row>
 				</Container>
 
-
-		<div className="container mt-5">
-
-			{/* <h2>{array.shift()}</h2>
+				<div className="container mt-5">
+					{/* <h2>{array.shift()}</h2>
 			<h2>{array.unshift('new Item')}</h2> */}
-			{/* <h2>{array.pop()}</h2>
+					{/* <h2>{array.pop()}</h2>
 			<h2>{array.push('last added')}</h2> */}
-			{/* <h2>{array.reverse()}</h2> */}
-			{/* <h2>{array.sort()}</h2> */}
-			{/* <h2>{this.state.array.reduce( function(a, b) {
+					{/* <h2>{array.reverse()}</h2> */}
+					{/* <h2>{array.sort()}</h2> */}
+					{/* <h2>{this.state.array.reduce( function(a, b) {
 			return a + b;
 			}, 2)}</h2><br /> */}
 
-			{/* <h2> {array.forEach((a,index) => console.log(index,a)) }
+					{/* <h2> {array.forEach((a,index) => console.log(index,a)) }
 			</h2> */}
 					<DatePicker
 						selected={this.state.startDate}
@@ -116,41 +108,59 @@ class ContactUs extends Component {
 						dateFormat="Pp"
 					/>
 
-			<h2>{element}</h2>
-			{/* <h2>It is {new Date().toLocaleDateString()}.</h2> */}
-			{/* <h2>{this.state.array}</h2> */}
+					<h2>{element}</h2>
+					{/* <h2>It is {new Date().toLocaleDateString()}.</h2> */}
+					{/* <h2>{this.state.array}</h2> */}
 
+					<button className="btn btn-primary" onClick={this.toggle.bind(this)}>
+						Toggle
+					</button>
+					{/* <h2 style={shown}>hello</h2> */}
+					<h2 style={hidden}>hello World</h2>
+					<BrowserRouter>
+						<section className="mb-5">
+							<div className="row">
+								<div
+									className="nav flex-column nav-pills col-lg-2 "
+									id="v-pills-tab"
+									role="tablist"
+									aria-orientation="vertical">
+									<NavLink
+										className="tab_section mb-2"
+										exact
+										to="/Contact/Home">
+										Home
+									</NavLink>
+									<NavLink className="tab_section mb-2" to="/Contact/Profile">
+										Profile
+									</NavLink>
+									<NavLink className="tab_section mb-2" to="/Contact/Settings">
+										Settings
+									</NavLink>
+									<NavLink
+										className="tab_section mb-2"
+										to="/Contact/FormValidations">
+										FormValidations
+									</NavLink>
+								</div>
 
-
-			<button className="btn btn-primary" onClick={this.toggle.bind(this)}>Toggle</button>
-			{/* <h2 style={shown}>hello</h2> */}
-			<h2 style={hidden}>hello World</h2>
-			<BrowserRouter>
-				<section className="">
-					<div className="row">
-
-						<div className="nav flex-column nav-pills col-lg-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-							<NavLink className="tab_section mb-2" exact to="/Contact/Home">Home</NavLink>
-							<NavLink className="tab_section mb-2" to="/Contact/Profile">Profile</NavLink>
-							<NavLink className="tab_section mb-2" to="/Contact/Settings">Settings</NavLink>
-						</div>
-
-						<div className="content col-lg-10">
-							<Route path="/Contact/" exact component={Home} />
-							<Route path="/Contact/Home" exact component={Home} />
-							<Route path="/Contact/Profile" component={Profile} />
-							<Route path="/Contact/Settings" component={Settings} />
-						</div>
-					</div>
-
-				</section>
-
-			</BrowserRouter>
+								<div className="content col-lg-10">
+									<Route path="/Contact/" exact component={Home} />
+									<Route path="/Contact/Home" exact component={Home} />
+									<Route path="/Contact/Profile" component={Profile} />
+									<Route path="/Contact/Settings" component={Settings} />
+									<Route
+										path="/Contact/FormValidations"
+										component={FormValidations}
+									/>
+								</div>
+							</div>
+						</section>
+					</BrowserRouter>
 				</div>
 			</React.Fragment>
 		);
 	}
-
 }
 
 export default ContactUs;

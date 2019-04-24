@@ -34,7 +34,10 @@ class NameForm extends Component {
 	};
 
 	render() {
+		const { username, password } = this.state;
+
 		const AllReg = "[a-zA-Z0-9_]+.*$";
+		const isEnabled = username.length > 0 && password.length > 0;
 		const formElements = [
 			{
 				label: "Username",
@@ -43,7 +46,7 @@ class NameForm extends Component {
 				class: "form-control",
 				placeholder: "Enter Username",
 				name: "username",
-				value: this.state.username,
+				value: username,
 				required: true,
 				pattern: AllReg
 			},
@@ -54,7 +57,7 @@ class NameForm extends Component {
 				class: "form-control",
 				placeholder: "Enter Password",
 				name: "password",
-				value: this.state.password,
+				value: password,
 				required: true,
 				pattern: AllReg
 			}
@@ -73,14 +76,15 @@ class NameForm extends Component {
 								className="col-lg-4 mt-5"
 								id="primary"
 								variant="contained"
-								color="primary">
+								color="primary"
+								disabled={!isEnabled}>
 								Submit
 							</Button>
 						</div>
 					</form>
 
 					<div style={{ textAlign: "center" }}>
-						<Link to={"/singup"} className="nav-link">
+						<Link to={"/login/singup"} className="nav-link">
 							{" "}
 							<Button color="primary">Sing UP</Button>
 						</Link>

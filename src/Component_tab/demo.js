@@ -10,7 +10,7 @@ export default class demo extends Component {
 				{formElements &&
 					formElements.map((value, index) => (
 						<div className="form-group" key={index}>
-							<label>{value.label}</label>
+							<label htmlFor={value.label}>{value.label}</label>
 							<input
 								type={value.type}
 								autoComplete={value.autoComplete}
