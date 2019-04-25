@@ -26,8 +26,8 @@ export default class formValidations extends Component {
 						.oneOf([Yup.ref("password"), null], "Passwords must match")
 						.required("Confirm Password is required")
 				})}
-				onSubmit={(fields, index) => {
-					alert(this.initialValues);
+				onSubmit={fields => {
+					alert(fields.firstName);
 				}}
 				render={({ errors, touched }) => (
 					<Form>

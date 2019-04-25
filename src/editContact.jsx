@@ -42,15 +42,15 @@ export default class editContact extends Component {
 	onSubmitContact = e => {
 		e.preventDefault();
 		const newIdedit = this.props.match.params.id;
-		const myFrom = {
-			name: this.state.name,
-			email: this.state.email,
-			uaddress: this.state.uaddress,
-			city: this.state.city,
-			phone: this.state.phone,
-			website: this.state.website
-		};
-		API.put(`users/${newIdedit}`, { myFrom })
+		// const myFrom = {
+		// 	name: this.state.name,
+		// 	email: this.state.email,
+		// 	uaddress: this.state.uaddress,
+		// 	city: this.state.city,
+		// 	phone: this.state.phone,
+		// 	website: this.state.website
+		// };
+		API.put(`users/${newIdedit}`, this.state)
 			.then(res => {
 				alert("Updated Successfully");
 				this.props.history.push("/contactnew");

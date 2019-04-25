@@ -20,8 +20,7 @@ export default class ui extends Component {
 	onClick(e) {
 		e.preventDefault();
 		this.setState({
-			counter: this.state.counter + 1,
-			newTitle: "hello world"
+			counter: this.state.counter + 1
 		});
 
 		if (this.state.display === "block") {
@@ -29,6 +28,7 @@ export default class ui extends Component {
 				display: "none",
 				btnText: "Back",
 				classs: "btn btn-danger",
+				newTitle: "Solapur",
 				textName: {
 					name: "validations React js ",
 					color: "green"
@@ -39,6 +39,7 @@ export default class ui extends Component {
 				display: "block",
 				btnText: "Next",
 				classs: "btn btn-primary",
+				newTitle: this.props.title,
 				textName: {
 					name: "validations",
 					color: "blue"

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Demo from "./demo";
+import Select from "./select";
 import Button from "@material-ui/core/Button";
 
 export default class Home extends Component {
@@ -9,7 +10,10 @@ export default class Home extends Component {
 			username: "",
 			password: "",
 			age: "",
-			email: ""
+			email: "",
+			example_select: "",
+			example_select2: "",
+			exampleRadios: ""
 		};
 	}
 
@@ -24,7 +28,10 @@ export default class Home extends Component {
 			username: "",
 			password: "",
 			age: "",
-			email: ""
+			email: "",
+			example_select: "",
+			example_select2: "",
+			exampleRadios: ""
 		});
 	};
 	render() {
@@ -80,14 +87,77 @@ export default class Home extends Component {
 			}
 		];
 
+		const selectformElements = [
+			{
+				label: "Example select",
+				class: "form-control",
+				id: "lang",
+				name: "example_select",
+				value: this.state.example_select,
+				option1: "A",
+				option2: "B",
+				option3: "C"
+			},
+			{
+				label: "Example Numbers",
+				class: "form-control",
+				id: "lang1",
+				name: "example_select2",
+				value: this.state.example_select2,
+				option1: "1",
+				option2: "2",
+				option3: "3",
+				option4: "4"
+			}
+		];
+
 		return (
 			<div>
 				<h2>Homw is work</h2>
 
 				<form onSubmit={this.onSubmitContact}>
-					<div>
-						<Demo formElements={formElements} onChange={this.onChange} />
-						<br />
+					<Demo formElements={formElements} onChange={this.onChange} />
+					<Select selectform={selectformElements} onChange={this.onChange} />
+
+					<div className="form-check">
+						<input
+							className="form-check-input"
+							type="radio"
+							name="exampleRadios"
+							id="exampleRadios1"
+							value="option1"
+							defaultChecked
+							onChange={this.onChange}
+						/>
+						<label className="form-check-label" htmlFor="exampleRadios1">
+							Default radio
+						</label>
+					</div>
+					<div className="form-check">
+						<input
+							className="form-check-input"
+							type="radio"
+							name="exampleRadios"
+							id="exampleRadios2"
+							value="option2"
+							onChange={this.onChange}
+						/>
+						<label className="form-check-label" htmlFor="exampleRadios2">
+							Second default radio
+						</label>
+					</div>
+					<div className="form-check">
+						<input
+							className="form-check-input"
+							type="radio"
+							name="exampleRadios"
+							id="exampleRadios3"
+							value="option3"
+							onChange={this.onChange}
+						/>
+						<label className="form-check-label" htmlFor="exampleRadios3">
+							Disabled radio
+						</label>
 					</div>
 					<div className="text-center">
 						<Button
@@ -95,7 +165,7 @@ export default class Home extends Component {
 							className="col-lg-4 mt-5"
 							id="primary"
 							variant="contained"
-							color="primary">
+							color="secondary">
 							Submit
 						</Button>
 					</div>

@@ -19,13 +19,13 @@ export default class addContact extends Component {
 
 	onSubmitContact = e => {
 		e.preventDefault();
-		const myFrom = {
-			name: this.state.name,
-			Username: this.state.Username,
-			email: this.state.email
-		};
+		// const myFrom = {
+		// 	name: this.state.name,
+		// 	Username: this.state.Username,
+		// 	email: this.state.email
+		// };
 
-		API.post(`users`, { myFrom }).then(res => {
+		API.post(`users`, this.state).then(res => {
 			console.log(res.data);
 			alert("User Created Successfully");
 			this.setState({
