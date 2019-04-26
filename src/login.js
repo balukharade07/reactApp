@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import logo from "../src/images/logo-small.png";
 import "./App.css";
-import Demo from "./Component_tab/demo";
+import Inputs from "./Component_tab/demo";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
-// import TextField from '@material-ui/core/TextField';
-// import Validate from "react-validate-form";
+import CustomButton from "./button";
 
 class NameForm extends Component {
 	componentDidMount() {
@@ -37,7 +36,7 @@ class NameForm extends Component {
 		const { username, password } = this.state;
 
 		const AllReg = "[a-zA-Z0-9_]+.*$";
-		const isEnabled = username.length > 0 && password.length > 0;
+		// const isEnabled = username.length > 0 && password.length > 0;
 		const formElements = [
 			{
 				label: "Username",
@@ -62,6 +61,15 @@ class NameForm extends Component {
 				pattern: AllReg
 			}
 		];
+		const Custom_Button = [
+			{
+				type: "submit",
+				className: "col-lg-4 mt-5",
+				variant: "contained",
+				color: "primary",
+				btnText: "Submit"
+			}
+		];
 		return (
 			<React.Fragment>
 				<div className="offset-lg-3 col-lg-6">
@@ -69,9 +77,10 @@ class NameForm extends Component {
 						<img className="mt-5 " src={logo} alt="Logo" />
 					</div>
 					<form onSubmit={this.onSubmitContact}>
-						<Demo formElements={formElements} onChange={this.onChange} />
+						<Inputs formElements={formElements} onChange={this.onChange} />
 						<div className="text-center">
-							<Button
+							<CustomButton Custom_Button={Custom_Button} />
+							{/* <Button
 								type="submit"
 								className="col-lg-4 mt-5"
 								id="primary"
@@ -79,13 +88,12 @@ class NameForm extends Component {
 								color="primary"
 								disabled={!isEnabled}>
 								Submit
-							</Button>
+							</Button> */}
 						</div>
 					</form>
 
 					<div style={{ textAlign: "center" }}>
 						<Link to={"/login/singup"} className="nav-link">
-							{" "}
 							<Button color="primary">Sing UP</Button>
 						</Link>
 					</div>

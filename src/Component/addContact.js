@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import Button from "@material-ui/core/Button";
+// import Button from "@material-ui/core/Button";
 import "../App.css";
 import API from "../api";
+import CustomButton from "../button";
 
 export default class addContact extends Component {
 	constructor(props) {
@@ -41,6 +42,16 @@ export default class addContact extends Component {
 		const { Name, Age, Address } = this.props;
 		const OnlyAlphabetsReg = "^[a-zA-Z][a-zA-Z ]+$";
 		const AllReg = "[a-zA-Z0-9_]+.*$";
+
+		const Custom_Button = [
+			{
+				type: "submit",
+				className: "col-lg-4 mt-5",
+				variant: "contained",
+				color: "primary",
+				btnText: "Submit"
+			}
+		];
 		return (
 			<div className="container mt-5">
 				<div className="row justify-content-center">
@@ -94,15 +105,7 @@ export default class addContact extends Component {
 								/>
 							</div>
 							<div className="text-center">
-								<Button
-									type="submit"
-									className="col-lg-4 mt-5"
-									id="primary"
-									variant="contained"
-									color="primary">
-									{" "}
-									Submit{" "}
-								</Button>
+								<CustomButton Custom_Button={Custom_Button} />
 							</div>
 						</form>
 					</div>

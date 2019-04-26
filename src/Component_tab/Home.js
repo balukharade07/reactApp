@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import Demo from "./demo";
+import Inputs from "./demo";
 import Select from "./select";
-import Button from "@material-ui/core/Button";
+import RadioInput from "./radioInput";
+import CustomButton from "../button";
 
 export default class Home extends Component {
 	constructor(props) {
@@ -93,84 +94,75 @@ export default class Home extends Component {
 				class: "form-control",
 				id: "lang",
 				name: "example_select",
+				disabledText: "Select ABC",
+				required: true,
 				value: this.state.example_select,
-				option1: "A",
-				option2: "B",
-				option3: "C"
+				option: ["A", "B", "C", "D"]
 			},
 			{
 				label: "Example Numbers",
 				class: "form-control",
 				id: "lang1",
 				name: "example_select2",
+				disabledText: "Select Numbers",
+				required: true,
 				value: this.state.example_select2,
-				option1: "1",
-				option2: "2",
-				option3: "3",
-				option4: "4"
+				option: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+			}
+		];
+		const selectradio = [
+			{
+				classinput: "form-check-input",
+				type: "radio",
+				name: "exampleRadios",
+				id: "exampleRadios1",
+				value: "option1",
+				classlabel: "form-check-label",
+				htmlFor: "exampleRadios1",
+				radioName: "Default radio"
+			},
+			{
+				classinput: "form-check-input",
+				type: "radio",
+				name: "exampleRadios",
+				id: "exampleRadios2",
+				value: "option2",
+				classlabel: "form-check-label",
+				htmlFor: "exampleRadios2",
+				radioName: "Default option2"
+			},
+			{
+				classinput: "form-check-input",
+				type: "radio",
+				name: "exampleRadios",
+				id: "exampleRadios3",
+				value: "option3",
+				classlabel: "form-check-label",
+				htmlFor: "exampleRadios3",
+				radioName: "Default option3"
+			}
+		];
+
+		const Custom_Button = [
+			{
+				type: "submit",
+				className: "col-lg-4 mt-5",
+				variant: "contained",
+				color: "secondary",
+				btnText: "Submit Form"
 			}
 		];
 
 		return (
-			<div>
-				<h2>Homw is work</h2>
-
+			<React.Fragment>
+				<h2>Form Elements</h2>
 				<form onSubmit={this.onSubmitContact}>
-					<Demo formElements={formElements} onChange={this.onChange} />
+					<Inputs formElements={formElements} onChange={this.onChange} />
 					<Select selectform={selectformElements} onChange={this.onChange} />
-
-					<div className="form-check">
-						<input
-							className="form-check-input"
-							type="radio"
-							name="exampleRadios"
-							id="exampleRadios1"
-							value="option1"
-							defaultChecked
-							onChange={this.onChange}
-						/>
-						<label className="form-check-label" htmlFor="exampleRadios1">
-							Default radio
-						</label>
-					</div>
-					<div className="form-check">
-						<input
-							className="form-check-input"
-							type="radio"
-							name="exampleRadios"
-							id="exampleRadios2"
-							value="option2"
-							onChange={this.onChange}
-						/>
-						<label className="form-check-label" htmlFor="exampleRadios2">
-							Second default radio
-						</label>
-					</div>
-					<div className="form-check">
-						<input
-							className="form-check-input"
-							type="radio"
-							name="exampleRadios"
-							id="exampleRadios3"
-							value="option3"
-							onChange={this.onChange}
-						/>
-						<label className="form-check-label" htmlFor="exampleRadios3">
-							Disabled radio
-						</label>
-					</div>
-					<div className="text-center">
-						<Button
-							type="submit"
-							className="col-lg-4 mt-5"
-							id="primary"
-							variant="contained"
-							color="secondary">
-							Submit
-						</Button>
-					</div>
+					<RadioInput selectradio={selectradio} onChange={this.onChange} />
+					<CustomButton Custom_Button={Custom_Button} />
 				</form>
-			</div>
+			</React.Fragment>
 		);
 	}
 }

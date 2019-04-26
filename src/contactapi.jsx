@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import API from "./api";
+import CustomButton from "./button";
 
 export default class contactapi extends Component {
 	constructor(props) {
@@ -29,6 +29,23 @@ export default class contactapi extends Component {
 
 	render() {
 		const { error, isLoaded, items } = this.state;
+
+		const Custom_Button = [
+			{
+				type: "submit",
+				variant: "contained",
+				color: "secondary",
+				btnText: "Contact View"
+			}
+		];
+		const Custom_ButtonPri = [
+			{
+				type: "submit",
+				variant: "contained",
+				color: "primary",
+				btnText: "Contact Edit"
+			}
+		];
 		if (error) {
 			return <div>Error: {error.message}</div>;
 		} else if (!isLoaded) {
@@ -42,16 +59,10 @@ export default class contactapi extends Component {
 								<p>{item.name}</p>
 								<p>{item.email}</p>
 								<Link to={"/contactnew/show/" + item.id} className="nav-link">
-									{" "}
-									<Button variant="contained" color="secondary">
-										Contact View
-									</Button>
+									<CustomButton Custom_Button={Custom_Button} />
 								</Link>
 								<Link to={"/contactnew/edit/" + item.id} className="nav-link">
-									{" "}
-									<Button variant="contained" color="primary">
-										Contact Edit
-									</Button>
+									<CustomButton Custom_Button={Custom_ButtonPri} />
 								</Link>
 							</div>
 						</div>

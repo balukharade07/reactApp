@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import SelectOption from "./selectOption";
 
 export default class select extends Component {
 	render() {
@@ -14,11 +13,16 @@ export default class select extends Component {
 							id={value.id}
 							value={value.value}
 							name={value.name}
+							required={value.required}
 							onChange={onChange}>
-							<option value={value.option1}>{value.option1}</option>
-							<option value={value.option2}>{value.option2}</option>
-							<option value={value.option3}>{value.option3}</option>
-							<option value={value.option4}>{value.option4}</option>
+							<option disabled value="" hidden>
+								{value.disabledText}
+							</option>
+							{value.option.map((newValue, index) => (
+								<option key={index} value={newValue}>
+									{newValue}
+								</option>
+							))}
 						</select>
 					</div>
 				))}

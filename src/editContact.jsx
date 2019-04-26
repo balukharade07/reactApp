@@ -142,7 +142,6 @@ export default class editContact extends Component {
 			<React.Fragment>
 				<div className="container mt-5 mb-5">
 					<Link to={"/contactnew"} className="nav-link">
-						{" "}
 						<Button
 							style={{ float: "right" }}
 							className=""
@@ -169,8 +168,7 @@ export default class editContact extends Component {
 									id="primary"
 									variant="contained"
 									color="primary">
-									{" "}
-									Submit{" "}
+									Submit
 								</Button>
 							</div>
 						</form>

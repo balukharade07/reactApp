@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import logo from "../src/images/logo-small.png";
 import "./App.css";
-import Demo from "./Component_tab/demo";
-import Button from "@material-ui/core/Button";
-// import TextField from '@material-ui/core/TextField';
-// import Validate from "react-validate-form";
+import Inputs from "./Component_tab/demo";
+import CustomButton from "./button";
 
 class Singup extends Component {
 	componentDidMount() {
@@ -98,6 +96,15 @@ class Singup extends Component {
 				pattern: AllReg
 			}
 		];
+		const Custom_Button = [
+			{
+				type: "submit",
+				className: "col-lg-4 mt-5 mb-5",
+				variant: "contained",
+				color: "primary",
+				btnText: "Submit"
+			}
+		];
 		return (
 			<React.Fragment>
 				<div className="offset-lg-3 col-lg-6">
@@ -105,16 +112,9 @@ class Singup extends Component {
 						<img className="mt-5 " src={logo} alt="Logo" />
 					</div>
 					<form onSubmit={this.onSubmitContact}>
-						<Demo formElements={formElements} onChange={this.onChange} />
+						<Inputs formElements={formElements} onChange={this.onChange} />
 						<div className="text-center">
-							<Button
-								type="submit"
-								className="col-lg-4 mt-5 mb-5"
-								id="primary"
-								variant="contained"
-								color="primary">
-								Submit
-							</Button>
+							<CustomButton Custom_Button={Custom_Button} />
 						</div>
 					</form>
 				</div>
