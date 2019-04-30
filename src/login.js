@@ -7,58 +7,110 @@ import { Link } from "react-router-dom";
 import CustomButton from "./button";
 
 class NameForm extends Component {
-	componentDidMount() {
-		document.title = "Logic Login page";
-	}
-
 	constructor(props) {
 		super(props);
 		this.state = {
-			username: "",
-			password: ""
+			fields: {
+				username: "",
+				password: ""
+			},
+			errors: {}
 		};
+
+		this.onChange = this.onChange.bind(this);
+		this.onSubmitContact = this.onSubmitContact.bind(this);
 	}
 
 	onChange = e => {
-		this.setState({ [e.target.name]: e.target.value });
+		let fields = this.state.fields;
+		fields[e.target.name] = e.target.value;
+		this.setState({
+			fields
+		});
+		this.validateForm();
 	};
 
 	onSubmitContact = e => {
 		e.preventDefault();
-		console.log(this.state);
-		this.setState({
-			username: "",
-			password: ""
-		});
+		if (this.validateForm()) {
+			let fields = {};
+			fields.username = "";
+			fields.password = "";
+			this.setState({ fields: fields });
+			console.log(this.state.fields);
+		}
 	};
 
-	render() {
-		const { username, password } = this.state;
+	validateForm() {
+		const fields = this.state.fields;
+		const errors = {};
+		let formIsValid = true;
 
-		const AllReg = "[a-zA-Z0-9_]+.*$";
-		// const isEnabled = username.length > 0 && password.length > 0;
+		if (typeof fields.username !== "undefined") {
+			if (!fields.username.match(/^[a-zA-Z][a-zA-Z ]+$/)) {
+				formIsValid = false;
+				errors.username = "*Please enter alphabet characters only.";
+			}
+		}
+
+		if (typeof fields.username !== "undefined") {
+			if (!fields.username) {
+				formIsValid = false;
+				errors.username = "*Please enter your username.";
+			}
+		}
+
+		if (typeof fields.password !== "undefined") {
+			if (!fields.password.match(/[a-zA-Z0-9_]+.*$/)) {
+				formIsValid = false;
+				errors.password = "*Please enter secure and strong password.";
+			}
+		}
+
+		if (typeof fields.password !== "undefined") {
+			if (fields.password.length < 8) {
+				formIsValid = false;
+				errors.password = "Password must be 8 or more characters";
+			}
+		}
+
+		if (typeof fields.password !== "undefined") {
+			if (!fields.password) {
+				formIsValid = false;
+				errors.password = "*Please enter your password.";
+			}
+		}
+
+		this.setState({
+			errors: errors
+		});
+
+		return formIsValid;
+	}
+
+	render() {
 		const formElements = [
 			{
 				label: "Username",
 				type: "text",
 				autoComplete: "OFF",
 				class: "form-control",
+				errorsBorder: this.state.errors.username,
 				placeholder: "Enter Username",
 				name: "username",
-				value: username,
-				required: true,
-				pattern: AllReg
+				value: this.state.fields.username,
+				errorsSMS: this.state.errors.username
 			},
 			{
 				label: "Password",
 				type: "password",
 				autoComplete: "OFF",
 				class: "form-control",
+				errorsBorder: this.state.errors.password,
 				placeholder: "Enter Password",
 				name: "password",
-				value: password,
-				required: true,
-				pattern: AllReg
+				value: this.state.fields.password,
+				errorsSMS: this.state.errors.password
 			}
 		];
 		const Custom_Button = [
@@ -80,15 +132,6 @@ class NameForm extends Component {
 						<Inputs formElements={formElements} onChange={this.onChange} />
 						<div className="text-center">
 							<CustomButton Custom_Button={Custom_Button} />
-							{/* <Button
-								type="submit"
-								className="col-lg-4 mt-5"
-								id="primary"
-								variant="contained"
-								color="primary"
-								disabled={!isEnabled}>
-								Submit
-							</Button> */}
 						</div>
 					</form>
 

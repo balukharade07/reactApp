@@ -28,7 +28,7 @@ export default class ui extends Component {
 				display: "none",
 				btnText: "Back",
 				classs: "btn btn-danger",
-				newTitle: "Solapur",
+				newTitle: "Change to State",
 				textName: {
 					name: "validations React js ",
 					color: "green"
