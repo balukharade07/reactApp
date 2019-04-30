@@ -15,7 +15,9 @@ form{
 form input.error {
   border-color: red;
 }
-
+.form-control.is-invalid{
+  background-image:none !important;
+}
 
 * {
   box-sizing: border-box;
@@ -213,7 +215,7 @@ footer{
 form label, form input {
   display: block;
   /* //margin-bottom: 10px; */
-  width: 90%
+  /* width: 90% */
 }
 
 form input {
@@ -244,4 +246,12 @@ form input {
 .sucessMsg {
   color: #6B8E23;
   margin-bottom: 10px;
+}
+.m-right-5{
+  margin-right: 50px;
+}
+@media screen and (max-width: 992px) {
+.m-right-5{
+  margin-right: 0px;
+}
 }

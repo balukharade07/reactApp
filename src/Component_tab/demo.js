@@ -17,7 +17,7 @@ export default class demo extends Component {
 							// className={value.class}
 							placeholder={value.placeholder}
 							className={
-								value.errorsBorder ? "form-control input-error" : value.class
+								value.errorsBorder ? "form-control is-invalid" : value.class
 							}
 							name={value.name}
 							value={value.value}

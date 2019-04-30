@@ -40,7 +40,7 @@ class header extends Component {
 									List Component
 								</NavLink>
 							</Nav>
-							<Nav className="mr-5">
+							<Nav className="m-right-5">
 								<NavLink className="nav-link" to="/login">
 									User login
 								</NavLink>
