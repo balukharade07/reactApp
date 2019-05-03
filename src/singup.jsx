@@ -136,13 +136,6 @@ class Singup extends Component {
 	}
 
 	render() {
-		// const AllReg = "[a-zA-Z0-9_]+.*$";
-		// const OnlyNumbersReg = "^[0-9]*$";
-		// const OnlyAlphabetsReg = "^[a-zA-Z][a-zA-Z ]+$";
-		// const OnlyNumCharReg = "^[a-zA-Z0-9][a-zA-Z0-9 ]+$";
-		// const UserNameReg = "^[a-zA-Z][a-zA-Z]+$";
-		// const EmailReg = "/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/"
-
 		const formElements = [
 			{
 				label: "First Name",

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 export default class ui extends Component {
 	constructor(props) {
@@ -13,15 +14,18 @@ export default class ui extends Component {
 				name: "validations",
 				color: "blue"
 			},
-			counter: 0
+			counter: this.props.count
 		};
+		this.handleNvEnter = this.handleNvEnter.bind(this);
+		this.handleNvLeave = this.handleNvLeave.bind(this);
+		this.onClick = this.onClick.bind(this);
 	}
 
 	onClick(e) {
 		e.preventDefault();
-		this.setState({
-			counter: this.state.counter + 1
-		});
+		this.setState(prevState => ({
+			counter: prevState.counter + 1
+		}));
 
 		if (this.state.display === "block") {
 			this.setState({
@@ -48,7 +52,52 @@ export default class ui extends Component {
 		}
 	}
 
+	componentWillMount() {
+		console.log("componentWillMount");
+	}
+
+	componentDidMount() {
+		console.log("componentDidMount");
+		const Collaps2 = document.getElementById("Collaps");
+		Collaps2.addEventListener("mouseenter", this.handleNvEnter);
+		Collaps2.addEventListener("mouseleave", this.handleNvLeave);
+		Collaps2.addEventListener("click", this.handleNvEnter);
+	}
+	handleNvEnter() {
+		const Collaps2 = document.getElementById("Collaps");
+		Collaps2.style.color = "orange";
+	}
+	handleNvLeave() {
+		const Collaps2 = document.getElementById("Collaps");
+		Collaps2.style.color = "#000";
+	}
+	componentWillUnmount() {
+		console.log("componentWillUnmount");
+		document.removeEventListener("click", this.handleNvEnter);
+	}
+	//WARNING! To be deprecated in React v17. Use new lifecycle static getDerivedStateFromProps instead.
+	componentWillReceiveProps(nextProps) {
+		console.log("componentWillReceiveProps", nextProps);
+	}
+	//WARNING! To be deprecated in React v17. Use componentDidUpdate instead.
+	componentWillUpdate(nextProps, nextState) {
+		console.log("componentWillUpdate", nextProps, nextState);
+	}
+
+	componentDidUpdate(prevProps, prevState) {
+		console.log("componentDidUpdate", prevProps, prevState);
+	}
+
+	shouldComponentUpdate(nextProps, nextState) {
+		console.log("shouldComponentUpdate");
+		return (
+			this.props.name !== nextProps.name ||
+			this.state.counter !== nextState.counter
+		);
+	}
+
 	render() {
+		console.log("render");
 		const stylebtn = {
 			btnStyle: {
 				color: "#fff"
@@ -73,11 +122,20 @@ export default class ui extends Component {
 				</button>
 				<h2>{this.state.newTitle}</h2>
 				<h3>{this.state.counter}</h3>
+				<h5 id="Collaps">Collapsible Group Item</h5>
 			</React.Fragment>
 		);
 	}
 }
 ui.defaultProps = {
 	name: "Hello",
-	message: "abcd"
+	message: "abcd",
+	count: 0
+};
+
+ui.propTypes = {
+	title: PropTypes.string.isRequired,
+	name: PropTypes.string.isRequired,
+	message: PropTypes.string.isRequired,
+	count: PropTypes.number.isRequired
 };

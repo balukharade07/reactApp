@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Footer from "./footer";
 import Header from "./header";
-// import UI from "./ui";
+import UI from "./ui";
 // import RegisterForm from "./RegisterForm";
 // import UI2 from "./ui2";
 
@@ -15,9 +15,9 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
-				<Header />
-				<Footer />
-				{/* <UI title="Send To Parent" /> */}
+				{/* <Header />
+				<Footer /> */}
+				<UI title="Send To Parent" />
 				{/* <UI2 /> */}
 				{/* <RegisterForm /> */}
 			</div>

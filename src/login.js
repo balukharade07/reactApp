@@ -87,7 +87,9 @@ class NameForm extends Component {
 
 		return formIsValid;
 	}
-
+	componentWillUnmount() {
+		console.log(this);
+	}
 	render() {
 		const formElements = [
 			{

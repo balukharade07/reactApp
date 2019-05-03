@@ -27,7 +27,6 @@ export default class showContact extends Component {
 				alert(error);
 			});
 	}
-
 	render() {
 		const { error, isLoaded, itemsNew } = this.state;
 		if (error) {
