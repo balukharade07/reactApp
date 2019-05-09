@@ -14,7 +14,8 @@ export default class ui extends Component {
 				name: "validations",
 				color: "blue"
 			},
-			counter: this.props.count
+			counter: this.props.count,
+			isShow: true
 		};
 		this.handleNvEnter = this.handleNvEnter.bind(this);
 		this.handleNvLeave = this.handleNvLeave.bind(this);
@@ -123,6 +124,22 @@ export default class ui extends Component {
 				<h2>{this.state.newTitle}</h2>
 				<h3>{this.state.counter}</h3>
 				<h5 id="Collaps">Collapsible Group Item</h5>
+
+				<button
+					className="btn btn-success"
+					onClick={() =>
+						this.setState({
+							isShow: !this.state.isShow
+						})
+					}>
+					SHOW
+				</button>
+				{this.state.isShow ? (
+					<div>
+						<h2>sdfsdgf</h2>
+						<h3>sdhfiusdhfuisd</h3>
+					</div>
+				) : null}
 			</React.Fragment>
 		);
 	}

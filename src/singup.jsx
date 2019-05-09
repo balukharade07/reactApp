@@ -3,6 +3,7 @@ import logo from "../src/images/logo-small.png";
 import "./App.css";
 import Inputs from "./Component_tab/demo";
 import CustomButton from "./button";
+import { validations } from "./GlobleVar";
 
 class Singup extends Component {
 	componentDidMount() {
@@ -56,7 +57,7 @@ class Singup extends Component {
 		let formIsValid = true;
 
 		if (singup.Fname !== "undefined") {
-			if (!singup.Fname.match(/^[a-zA-Z][a-zA-Z ]+$/)) {
+			if (!singup.Fname.match(validations.OnlyAlphabetsReg)) {
 				formIsValid = false;
 				errors.Fname = "*Please enter alphabet characters only.";
 			}
@@ -69,7 +70,7 @@ class Singup extends Component {
 		}
 
 		if (singup.Lname !== "undefined") {
-			if (!singup.Lname.match(/^[a-zA-Z][a-zA-Z ]+$/)) {
+			if (!singup.Lname.match(validations.OnlyAlphabetsReg)) {
 				formIsValid = false;
 				errors.Lname = "*Please enter alphabet characters only.";
 			}
@@ -94,7 +95,7 @@ class Singup extends Component {
 			}
 		}
 		if (singup.username !== "undefined") {
-			if (!singup.username.match(/^[a-zA-Z][a-zA-Z ]+$/)) {
+			if (!singup.username.match(validations.UserNameReg)) {
 				formIsValid = false;
 				errors.username = "*Please enter alphabet characters only.";
 			}
@@ -108,7 +109,7 @@ class Singup extends Component {
 		}
 
 		if (singup.password !== "undefined") {
-			if (!singup.password.match(/[a-zA-Z0-9_]+.*$/)) {
+			if (!singup.password.match(validations.AllReg)) {
 				formIsValid = false;
 				errors.password = "*Please enter secure and strong password.";
 			}

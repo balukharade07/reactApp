@@ -73,7 +73,6 @@ export default class editContact extends Component {
 				placeholder: "Enter name",
 				name: "name",
 				defaultValue: name,
-				value: name,
 				required: true,
 				pattern: AllReg
 			},
@@ -85,7 +84,6 @@ export default class editContact extends Component {
 				placeholder: "Enter email",
 				name: "email",
 				defaultValue: email,
-				value: email,
 				required: true,
 				pattern: AllReg
 			},
@@ -97,7 +95,6 @@ export default class editContact extends Component {
 				placeholder: "Enter uaddress",
 				name: "uaddress",
 				defaultValue: uaddress,
-				value: uaddress,
 				required: true,
 				pattern: AllReg
 			},
@@ -109,7 +106,6 @@ export default class editContact extends Component {
 				placeholder: "Enter city",
 				name: "city",
 				defaultValue: city,
-				value: city,
 				required: true,
 				pattern: AllReg
 			},
@@ -121,7 +117,6 @@ export default class editContact extends Component {
 				placeholder: "Enter phone",
 				name: "phone",
 				defaultValue: phone,
-				value: phone,
 				required: true,
 				pattern: AllReg
 			},
@@ -133,7 +128,6 @@ export default class editContact extends Component {
 				placeholder: "Enter website",
 				name: "website",
 				defaultValue: website,
-				value: website,
 				required: true,
 				pattern: AllReg
 			}

@@ -5,6 +5,7 @@ import Inputs from "./Component_tab/demo";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import CustomButton from "./button";
+import { validations } from "./GlobleVar";
 
 class NameForm extends Component {
 	constructor(props) {
@@ -47,7 +48,7 @@ class NameForm extends Component {
 		let formIsValid = true;
 
 		if (typeof fields.username !== "undefined") {
-			if (!fields.username.match(/^[a-zA-Z][a-zA-Z ]+$/)) {
+			if (!fields.username.match(validations.OnlyAlphabetsReg)) {
 				formIsValid = false;
 				errors.username = "*Please enter alphabet characters only.";
 			}
@@ -61,7 +62,7 @@ class NameForm extends Component {
 		}
 
 		if (typeof fields.password !== "undefined") {
-			if (!fields.password.match(/[a-zA-Z0-9_]+.*$/)) {
+			if (!fields.password.match(validations.AllReg)) {
 				formIsValid = false;
 				errors.password = "*Please enter secure and strong password.";
 			}

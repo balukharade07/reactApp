@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "../App.css";
-// import Button from '@material-ui/core/Button';
 
 export default class demo extends Component {
 	render() {
