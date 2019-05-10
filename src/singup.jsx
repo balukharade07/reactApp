@@ -20,7 +20,8 @@ class Singup extends Component {
 				Lname: "",
 				email: ""
 			},
-			errors: {}
+			errors: {},
+			modalShow: this.props.modalShow
 		};
 	}
 
@@ -35,10 +36,14 @@ class Singup extends Component {
 
 	onSubmitContact = e => {
 		e.preventDefault();
-
+		this.setState({
+			modalShow: !this.state.modalShow
+		});
 		if (this.validateForm()) {
 			console.log(this.state.singup);
-			this.props.history.push("/login");
+			// this.props.history.push("/");
+			// console.log(this.props.modalShow);
+
 			this.setState({
 				singup: {
 					username: "",
@@ -206,7 +211,7 @@ class Singup extends Component {
 		];
 		return (
 			<React.Fragment>
-				<div className="offset-lg-3 col-lg-6">
+				<div className="offset-lg-1 col-lg-10">
 					<div style={{ textAlign: "center" }}>
 						<img className="mt-5 " src={logo} alt="Logo" />
 					</div>

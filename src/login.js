@@ -6,6 +6,8 @@ import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import CustomButton from "./button";
 import { validations } from "./GlobleVar";
+import Modal from "react-bootstrap/Modal";
+import Singup from "./singup";
 
 class NameForm extends Component {
 	constructor(props) {
@@ -15,7 +17,8 @@ class NameForm extends Component {
 				username: "",
 				password: ""
 			},
-			errors: {}
+			errors: {},
+			modalShow: this.props.modalShow
 		};
 
 		this.onChange = this.onChange.bind(this);
@@ -139,11 +142,36 @@ class NameForm extends Component {
 					</form>
 
 					<div style={{ textAlign: "center" }}>
-						<Link to={"/login/singup"} className="nav-link">
-							<Button color="primary">Sing UP</Button>
-						</Link>
+						<Button
+							onClick={() =>
+								this.setState({ modalShow: !this.state.modalShow })
+							}>
+							Singup
+						</Button>
 					</div>
 				</div>
+				<Modal
+					show={this.state.modalShow}
+					size="lg"
+					aria-labelledby="contained-modal-title-vcenter"
+					centered>
+					<Modal.Header>
+						<Modal.Title id="contained-modal-title-vcenter">
+							Singup Form
+						</Modal.Title>
+					</Modal.Header>
+					<Modal.Body>
+						<Singup modalShow={this.state.modalShow} />
+					</Modal.Body>
+					<Modal.Footer>
+						<Button
+							onClick={() =>
+								this.setState({ modalShow: !this.state.modalShow })
+							}>
+							Close
+						</Button>
+					</Modal.Footer>
+				</Modal>
 			</React.Fragment>
 		);
 	}
