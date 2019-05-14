@@ -19,7 +19,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 class ContactUs extends Component {
 	componentDidMount() {
-		document.title = "Logic Contact";
+		document.title = "React Contact";
 	}
 	constructor() {
 		super();

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import logo from "../src/images/logo-small.png";
+import logo from "../src/images/avatar.png";
 import "./App.css";
 import Inputs from "./Component_tab/demo";
 import CustomButton from "./button";
@@ -7,7 +7,7 @@ import { validations } from "./GlobleVar";
 
 class Singup extends Component {
 	componentDidMount() {
-		document.title = "Logic Singup";
+		document.title = "React Singup";
 	}
 
 	constructor(props) {
@@ -208,7 +208,12 @@ class Singup extends Component {
 			<React.Fragment>
 				<div className="offset-lg-1 col-lg-10">
 					<div style={{ textAlign: "center" }}>
-						<img className="mt-5 " src={logo} alt="Logo" />
+						<img
+							className="mt-5 "
+							src={logo}
+							alt="Logo"
+							style={{ width: "100px" }}
+						/>
 					</div>
 					<form onSubmit={this.onSubmitContact}>
 						<Inputs formElements={formElements} onChange={this.onChange} />

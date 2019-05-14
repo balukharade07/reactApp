@@ -11,7 +11,7 @@ import {
 	Redirect
 } from "react-router-dom";
 import "./App.css";
-import logo from "../src/images/logo-small.png";
+import logo from "../src/images/React.js_logo-512.png";
 import Text from "./Component/textfiles";
 import Contactlist from "./Component/contactlist";
 import { Navbar, Nav } from "react-bootstrap";
@@ -55,7 +55,7 @@ class header extends Component {
 					</Navbar>
 
 					<div className="content">
-						<Switch path="/Home-page">
+						<Switch path="/">
 							<Route path="/" exact component={LandingPage} />
 
 							<Switch path="/Home-page">
@@ -137,7 +137,7 @@ class header extends Component {
 							<Route path="/Contact" component={Contact} />
 							<Redirect
 								push
-								to="/Home-page"
+								to="/"
 								path="*"
 								exact={true}
 								component={LandingPage}

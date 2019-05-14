@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 export default class contacts extends Component {
 	componentDidMount() {
-		document.title = "Logic About";
+		document.title = "React About";
 	}
 
 	deleteContact(id) {

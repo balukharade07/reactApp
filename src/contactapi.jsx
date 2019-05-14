@@ -74,7 +74,7 @@ export default class contactapi extends Component {
 					</div>
 					<div className="container row mt-5 mb-5">
 						{items.map((item, index) => (
-							<div className="col-lg-4" key={index}>
+							<div className="col-xs-12 col-sm-6 col-md-6 col-lg-4" key={index}>
 								<div className="shadow  mb-4 bg-white">
 									<p>{item.name}</p>
 									<p>{item.email}</p>

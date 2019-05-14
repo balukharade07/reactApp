@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import logo from "../src/images/logo-small.png";
+import logo from "../src/images/avatar.png";
 import "./App.css";
 import Inputs from "./Component_tab/demo";
 import Button from "@material-ui/core/Button";
@@ -149,7 +149,12 @@ class NameForm extends Component {
 			<React.Fragment>
 				<div className="offset-lg-3 col-lg-6">
 					<div style={{ textAlign: "center" }}>
-						<img className="mt-5 " src={logo} alt="Logo" />
+						<img
+							className="mt-5 "
+							src={logo}
+							alt="Logo"
+							style={{ width: "100px" }}
+						/>
 					</div>
 					<h2 style={{ display: "none" }}>helloo</h2>
 					<form onSubmit={this.onSubmitContact}>

@@ -40,15 +40,15 @@ class App extends Component {
 	// }
 
 	componentDidMount() {
-		document.title = "Logic Hotspot";
+		document.title = "React Applications";
 	}
 	render() {
 		return (
 			<div className="App">
 				<Header />
 				<Footer
-					site="© 2019 Logic Hotspot All Rights Reserved."
-					email="Email: info@logichotspot.com"
+					site="© 2019 React Applications All Rights Reserved."
+					email="Email: info@ReactApplications.com"
 					address="Kelowna, British Columbia, V1P Contact No: 1.250.469.9632,"
 				/>
 				{/* <UI title="Send To Parent" /> */}
