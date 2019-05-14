@@ -25,6 +25,7 @@ export default class showContact extends Component {
 			})
 			.catch(error => {
 				alert(error);
+				this.props.history.push("/contactnew");
 			});
 	}
 	render() {

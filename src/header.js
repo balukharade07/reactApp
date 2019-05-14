@@ -3,7 +3,13 @@ import LandingPage from "./landing-page";
 import login from "./login";
 import Contact from "./contact";
 import About from "./Component/contacts";
-import { Route, NavLink, BrowserRouter } from "react-router-dom";
+import {
+	Switch,
+	Route,
+	NavLink,
+	BrowserRouter,
+	Redirect
+} from "react-router-dom";
 import "./App.css";
 import logo from "../src/images/logo-small.png";
 import Text from "./Component/textfiles";
@@ -49,26 +55,94 @@ class header extends Component {
 					</Navbar>
 
 					<div className="content">
-						<Route path="/" exact component={LandingPage} />
-						<Route path="/Home-page" component={LandingPage} />
+						<Switch path="/Home-page">
+							<Route path="/" exact component={LandingPage} />
 
-						<Route path="/contactnew">
-							<Route path="/contactnew" exact component={Contactnew} />
-							<Route path="/contactnew/show/:id" component={Show} />
-							<Route path="/contactnew/edit/:id" component={Edit} />
-						</Route>
+							<Switch path="/Home-page">
+								<Route path="/Home-page" exact component={LandingPage} />
+								<Redirect
+									push
+									to="/Home-page"
+									path="*"
+									exact={true}
+									component={LandingPage}
+								/>
+							</Switch>
 
-						<Route path="/About">
-							<Route path="/About" exact component={About} />
-							<Route path="/About/textfiles" component={Text} />
-							<Route path="/About/Contactlist" component={Contactlist} />
-						</Route>
-						<Route path="/login">
-							<Route path="/login" exact component={login} />
-							<Route path="/login/singup" component={Singup} />
-						</Route>
+							<Switch path="/contactnew">
+								<Route path="/contactnew" exact component={Contactnew} />
+								<Route path="/contactnew/show/:id" component={Show} />
+								<Route path="/contactnew/edit/:id" component={Edit} />
+								<Redirect
+									push
+									to="/contactnew"
+									path="*"
+									exact={true}
+									component={Contactnew}
+								/>
+							</Switch>
 
-						<Route path="/Contact" component={Contact} />
+							<Switch path="/About">
+								<Route path="/About" exact component={About} />
+								<Route path="/About/textfiles" component={Text} />
+								<Switch path="/About">
+									<Route path="/About" exact component={About} />
+									<Switch path="/About/Contactlist">
+										<Route
+											path="/About/Contactlist"
+											exact
+											component={Contactlist}
+										/>
+										<Redirect
+											push
+											to="/About/Contactlist"
+											path="*"
+											exact={true}
+											component={Contactlist}
+										/>
+									</Switch>
+
+									<Redirect
+										push
+										to="/About"
+										path="*"
+										exact={true}
+										component={About}
+									/>
+								</Switch>
+							</Switch>
+
+							<Switch path="/login">
+								<Route path="/login" exact component={login} />
+								<Switch path="/login/singup">
+									<Route path="/login/singup" exact component={Singup} />
+									<Redirect
+										push
+										to="/login/singup"
+										path="*"
+										exact={true}
+										component={Singup}
+									/>
+								</Switch>
+
+								<Redirect
+									push
+									to="/login"
+									path="*"
+									exact={true}
+									component={login}
+								/>
+							</Switch>
+
+							<Route path="/Contact" component={Contact} />
+							<Redirect
+								push
+								to="/Home-page"
+								path="*"
+								exact={true}
+								component={LandingPage}
+							/>
+						</Switch>
 					</div>
 				</BrowserRouter>
 			</header>

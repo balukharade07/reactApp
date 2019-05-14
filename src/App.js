@@ -19,16 +19,23 @@ class App extends Component {
 
 	// outputEvent() {
 	// 	// the event context comes from the Child
-	// 	if (this.state.count === 10) {
-	// 		alert("Max 10 count");
+	// 	if (this.state.name === "Reset") {
 	// 		this.setState({
-	// 			count: 0
+	// 			count: 0,
+	// 			name: "Add One More"
 	// 		});
-	// 		return false;
-	// 	} else {
-	// 		this.setState({
-	// 			count: this.state.count + 1
-	// 		});
+	// 	} else if (this.state.name === "Add One More") {
+	// 		if (this.state.count === 10) {
+	// 			alert("Max 10 count");
+	// 			this.setState({
+	// 				name: "Reset"
+	// 			});
+	// 			return false;
+	// 		} else {
+	// 			this.setState({
+	// 				count: this.state.count + 1
+	// 			});
+	// 		}
 	// 	}
 	// }
 
@@ -45,8 +52,12 @@ class App extends Component {
 					address="Kelowna, British Columbia, V1P Contact No: 1.250.469.9632,"
 				/>
 				{/* <UI title="Send To Parent" /> */}
-				{/* count:{this.state.count}
-				<Child clickHandler={this.outputEvent} btnName={this.state.name} /> */}
+
+				{/* <Child
+					clickHandler={this.outputEvent}
+					count={this.state.count}
+					btnName={this.state.name}
+				/> */}
 				{/* <RegisterForm /> */}
 				{/* <Child /> */}
 			</div>

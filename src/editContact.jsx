@@ -34,6 +34,7 @@ export default class editContact extends Component {
 			})
 			.catch(error => {
 				alert(error);
+				this.props.history.push("/contactnew");
 			});
 	}
 	onChange = e => {

@@ -20,8 +20,7 @@ class Singup extends Component {
 				Lname: "",
 				email: ""
 			},
-			errors: {},
-			modalShow: this.props.modalShow
+			errors: {}
 		};
 	}
 
@@ -36,23 +35,9 @@ class Singup extends Component {
 
 	onSubmitContact = e => {
 		e.preventDefault();
-		this.setState({
-			modalShow: !this.state.modalShow
-		});
 		if (this.validateForm()) {
 			console.log(this.state.singup);
-			// this.props.history.push("/");
-			// console.log(this.props.modalShow);
-
-			this.setState({
-				singup: {
-					username: "",
-					password: "",
-					Fname: "",
-					Lname: "",
-					email: ""
-				}
-			});
+			this.props.modalShow();
 		}
 	};
 
@@ -62,7 +47,7 @@ class Singup extends Component {
 		let formIsValid = true;
 
 		if (singup.Fname !== "undefined") {
-			if (!singup.Fname.match(validations.OnlyAlphabetsReg)) {
+			if (!singup.Fname.match(validations.reges.OnlyAlphabetsReg)) {
 				formIsValid = false;
 				errors.Fname = "*Please enter alphabet characters only.";
 			}
@@ -75,7 +60,7 @@ class Singup extends Component {
 		}
 
 		if (singup.Lname !== "undefined") {
-			if (!singup.Lname.match(validations.OnlyAlphabetsReg)) {
+			if (!singup.Lname.match(validations.reges.OnlyAlphabetsReg)) {
 				formIsValid = false;
 				errors.Lname = "*Please enter alphabet characters only.";
 			}
@@ -100,7 +85,7 @@ class Singup extends Component {
 			}
 		}
 		if (singup.username !== "undefined") {
-			if (!singup.username.match(validations.UserNameReg)) {
+			if (!singup.username.match(validations.reges.UserNameReg)) {
 				formIsValid = false;
 				errors.username = "*Please enter alphabet characters only.";
 			}
@@ -114,7 +99,7 @@ class Singup extends Component {
 		}
 
 		if (singup.password !== "undefined") {
-			if (!singup.password.match(validations.AllReg)) {
+			if (!singup.password.match(validations.reges.AllReg)) {
 				formIsValid = false;
 				errors.password = "*Please enter secure and strong password.";
 			}
@@ -140,7 +125,17 @@ class Singup extends Component {
 
 		return formIsValid;
 	}
-
+	componentWillUnmount() {
+		this.setState({
+			singup: {
+				username: "",
+				password: "",
+				Fname: "",
+				Lname: "",
+				email: ""
+			}
+		});
+	}
 	render() {
 		const formElements = [
 			{

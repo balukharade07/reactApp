@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import { Route, NavLink, BrowserRouter } from "react-router-dom";
+import {
+	Route,
+	Switch,
+	Redirect,
+	NavLink,
+	BrowserRouter
+} from "react-router-dom";
 import Home from "./Component_tab/Home";
 import Profile from "./Component_tab/Profile";
 import Settings from "./Component_tab/Settings";
@@ -145,14 +151,69 @@ class ContactUs extends Component {
 								</div>
 
 								<div className="content col-lg-10">
-									<Route path="/Contact/" exact component={Home} />
-									<Route path="/Contact/Home" exact component={Home} />
-									<Route path="/Contact/Profile" component={Profile} />
-									<Route path="/Contact/Settings" component={Settings} />
-									<Route
-										path="/Contact/FormValidations"
-										component={FormValidations}
-									/>
+									<Switch path="/Contact/">
+										<Route path="/Contact" exact component={Home} />
+
+										<Switch path="/Contact/Home">
+											<Route path="/Contact/Home" exact component={Home} />
+											<Redirect
+												push
+												to="/Contact/Home"
+												path="*"
+												exact={true}
+												component={Home}
+											/>
+										</Switch>
+										<Switch path="/Contact/Profile">
+											<Route
+												path="/Contact/Profile"
+												exact
+												component={Profile}
+											/>
+											<Redirect
+												push
+												to="/Contact/Profile"
+												path="*"
+												exact={true}
+												component={Profile}
+											/>
+										</Switch>
+										<Switch path="/Contact/Settings">
+											<Route
+												path="/Contact/Settings"
+												exact
+												component={Settings}
+											/>
+											<Redirect
+												push
+												to="/Contact/Settings"
+												path="*"
+												exact={true}
+												component={Settings}
+											/>
+										</Switch>
+										<Switch path="/Contact/FormValidations">
+											<Route
+												path="/Contact/FormValidations"
+												exact
+												component={FormValidations}
+											/>
+											<Redirect
+												push
+												to="/Contact/FormValidations"
+												path="*"
+												exact={true}
+												component={FormValidations}
+											/>
+										</Switch>
+										<Redirect
+											push
+											to="/Contact"
+											path="*"
+											exact={true}
+											component={Home}
+										/>
+									</Switch>
 								</div>
 							</div>
 						</section>

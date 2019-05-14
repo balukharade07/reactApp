@@ -3,7 +3,7 @@ import logo from "../src/images/logo-small.png";
 import "./App.css";
 import Inputs from "./Component_tab/demo";
 import Button from "@material-ui/core/Button";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import CustomButton from "./button";
 import { validations } from "./GlobleVar";
 import Modal from "react-bootstrap/Modal";
@@ -18,11 +18,13 @@ class NameForm extends Component {
 				password: ""
 			},
 			errors: {},
-			modalShow: this.props.modalShow
+			modalShow: false,
+			hide: false
 		};
 
 		this.onChange = this.onChange.bind(this);
 		this.onSubmitContact = this.onSubmitContact.bind(this);
+		this.Onclosemodal = this.Onclosemodal.bind(this);
 	}
 
 	onChange = e => {
@@ -36,6 +38,9 @@ class NameForm extends Component {
 
 	onSubmitContact = e => {
 		e.preventDefault();
+		this.setState({
+			hide: !this.state.hide
+		});
 		if (this.validateForm()) {
 			let fields = {};
 			fields.username = "";
@@ -51,7 +56,7 @@ class NameForm extends Component {
 		let formIsValid = true;
 
 		if (typeof fields.username !== "undefined") {
-			if (!fields.username.match(validations.OnlyAlphabetsReg)) {
+			if (!fields.username.match(validations.reges.OnlyAlphabetsReg)) {
 				formIsValid = false;
 				errors.username = "*Please enter alphabet characters only.";
 			}
@@ -65,7 +70,7 @@ class NameForm extends Component {
 		}
 
 		if (typeof fields.password !== "undefined") {
-			if (!fields.password.match(validations.AllReg)) {
+			if (!fields.password.match(validations.reges.AllReg)) {
 				formIsValid = false;
 				errors.password = "*Please enter secure and strong password.";
 			}
@@ -93,6 +98,18 @@ class NameForm extends Component {
 	}
 	componentWillUnmount() {
 		console.log(this);
+	}
+	Onclosemodal() {
+		this.setState({ modalShow: !this.state.modalShow });
+	}
+	componentWillReceiveProps(nextProps) {
+		console.log("componentWillReceiveProps", nextProps);
+	}
+	componentWillUpdate(nextProps, nextState) {
+		console.log("componentWillUpdate", nextProps, nextState);
+	}
+	componentDidUpdate(prevProps, prevState) {
+		console.log("componentDidUpdate", prevProps, prevState);
 	}
 	render() {
 		const formElements = [
@@ -134,6 +151,7 @@ class NameForm extends Component {
 					<div style={{ textAlign: "center" }}>
 						<img className="mt-5 " src={logo} alt="Logo" />
 					</div>
+					<h2 style={{ display: "none" }}>helloo</h2>
 					<form onSubmit={this.onSubmitContact}>
 						<Inputs formElements={formElements} onChange={this.onChange} />
 						<div className="text-center">
@@ -161,15 +179,10 @@ class NameForm extends Component {
 						</Modal.Title>
 					</Modal.Header>
 					<Modal.Body>
-						<Singup modalShow={this.state.modalShow} />
+						<Singup modalShow={this.Onclosemodal} />
 					</Modal.Body>
 					<Modal.Footer>
-						<Button
-							onClick={() =>
-								this.setState({ modalShow: !this.state.modalShow })
-							}>
-							Close
-						</Button>
+						<Button onClick={this.Onclosemodal}>Close</Button>
 					</Modal.Footer>
 				</Modal>
 			</React.Fragment>
