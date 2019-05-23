@@ -1,36 +1,37 @@
 import React, { Component } from "react";
 import Massage from "./Messages";
-import images2 from "../../src/images/BlenzCoffee.svg";
-import images3 from "../../src/images/BostonPizza.svg";
-import images5 from "../../src/images/ashcroft-bw.png";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { GET_CONTACTS } from "../action/types";
 
-export default class Profile extends Component {
+class Profile extends Component {
+	componentDidMount() {
+		this.props.getConatcts();
+	}
+
 	render() {
-		const boxdata = [
-			{
-				h2: "BlenzCoffee",
-				img: images2,
-				text:
-					"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-			},
-			{
-				h2: "BostonPizza",
-				img: images3,
-				text:
-					"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-			},
-			{
-				h2: "ashcroft-bw",
-				img: images5,
-				text:
-					"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-			}
-		];
-
+		const { contacts } = this.props;
 		return (
 			<div className="row">
-				<Massage boxdata={boxdata} />
+				<Massage boxdata={contacts} />
 			</div>
 		);
 	}
 }
+Profile.propTypes = {
+	contacts: PropTypes.array.isRequired,
+	getConatcts: PropTypes.func.isRequired
+};
+
+const mapStateToProps = state => ({
+	contacts: state.contact.contacts
+});
+
+const mapDispatchToProps = dispatch => ({
+	getConatcts: () => dispatch({ type: GET_CONTACTS })
+});
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(Profile);

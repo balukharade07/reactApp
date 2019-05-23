@@ -42,11 +42,20 @@ class NameForm extends Component {
 			hide: !this.state.hide
 		});
 		if (this.validateForm()) {
+			const { username, password } = this.state.fields;
 			let fields = {};
 			fields.username = "";
 			fields.password = "";
-			this.setState({ fields: fields });
-			console.log(this.state.fields);
+			if (username === "balu" && password === "balu@123") {
+				alert("Login SuccessFully");
+				this.props.history.push("/");
+				this.setState({ fields: fields });
+				console.log(this.state.fields);
+			} else {
+				alert("Invalid fields");
+				this.setState({ fields: fields });
+				console.log(this.state.fields);
+			}
 		}
 	};
 

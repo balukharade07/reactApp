@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import "./App.css";
 import Footer from "./footer";
 import Header from "./header";
+import { Provider } from "react-redux";
+import store from "./store";
 // import UI from "./ui";
 // import RegisterForm from "./RegisterForm";
 // import Child from "./childToParent";
@@ -44,23 +46,25 @@ class App extends Component {
 	}
 	render() {
 		return (
-			<div className="App">
-				<Header />
-				<Footer
-					site="© 2019 React Applications All Rights Reserved."
-					email="Email: info@ReactApplications.com"
-					address="Kelowna, British Columbia, V1P Contact No: 1.250.469.9632,"
-				/>
-				{/* <UI title="Send To Parent" /> */}
+			<Provider store={store}>
+				<div className="App">
+					<Header />
+					<Footer
+						site="© 2019 React Applications All Rights Reserved."
+						email="Email: info@ReactApplications.com"
+						address="Kelowna, British Columbia, V1P Contact No: 1.250.469.9632,"
+					/>
+					{/* <UI title="Send To Parent" /> */}
 
-				{/* <Child
+					{/* <Child
 					clickHandler={this.outputEvent}
 					count={this.state.count}
 					btnName={this.state.name}
 				/> */}
-				{/* <RegisterForm /> */}
-				{/* <Child /> */}
-			</div>
+					{/* <RegisterForm /> */}
+					{/* <Child /> */}
+				</div>
+			</Provider>
 		);
 	}
 }
